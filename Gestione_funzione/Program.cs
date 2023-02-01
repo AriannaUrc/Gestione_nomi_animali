@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 //1 Aggiunta nome animale ok.
 //2 Cancella primo nome trovato animale
 //3 Ordinamento in ordine alfabetico (bubbleSort)
-//4 Ricerca sequenziale animali
+//4 Ricerca sequenziale animali ok.
 //5 Visualizza animali ripetuti (anche quante volte sono ripetuti)
 //6 Modifica nome
 //7 Visualizzazione tutti gli animali ok.
@@ -50,6 +50,25 @@ namespace Gestione_funzione
             return pos;
         }
 
+        static bool Cancella(string[] nomi, ref int lenght, string ricerca)
+        {
+            int pos;
+            pos = Ricerca(nomi, ref lenght, ricerca);
+            if (pos == -1)
+            {
+                return false;  
+            }
+            else
+            {
+                for (int i = pos; i < lenght; i++)
+                {
+                    nomi[i] = nomi[i + 1];
+                }
+                lenght--;
+                return true;
+            }
+        }
+
         static void Main(string[] args)
         {
             string[] nomi = new string[100];
@@ -74,6 +93,16 @@ namespace Gestione_funzione
                         break;
 
                     case 2:
+                        Console.WriteLine("Inserire elemento da cancellare");
+                        ricerca = Console.ReadLine();
+                        if(Cancella(nomi, ref lenght, ricerca))
+                        {
+                            Console.WriteLine("L'elemento è stato cancellato");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Non è stato trovato un elemento con tale nome");
+                        }
                         break;
 
                     case 3:
@@ -107,6 +136,9 @@ namespace Gestione_funzione
                         break;
 
                     case 9:
+                        break;
+
+                    default:
                         break;
 
                 }
