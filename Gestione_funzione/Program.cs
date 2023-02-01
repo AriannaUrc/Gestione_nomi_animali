@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 //0 uscita dal menu ok.
 //1 Aggiunta nome animale ok.
-//2 Cancella primo nome trovato animale
+//2 Cancella primo nome trovato animale ok.
 //3 Ordinamento in ordine alfabetico (bubbleSort)
 //4 Ricerca sequenziale animali ok.
 //5 Visualizza animali ripetuti (anche quante volte sono ripetuti)
@@ -67,6 +67,29 @@ namespace Gestione_funzione
                 lenght--;
                 return true;
             }
+        }
+
+        static bool CancellaAll(string[] nomi, ref int lenght, string ricerca)
+        {
+            int pos=0;
+            while (pos != -1)
+            {
+                pos = Ricerca(nomi, ref lenght, ricerca);
+                if (pos == -1)
+                {
+                    return false;
+                }
+                else
+                {
+                    for (int i = pos; i < lenght; i++)
+                    {
+                        nomi[i] = nomi[i + 1];
+                    }
+                    lenght--;
+                    return true;
+                }
+            }
+            
         }
 
         static void Main(string[] args)
