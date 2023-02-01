@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//0 uscita dal menu
 //1 Aggiunta nome animale
 //2 Cancella primo nome trovato animale
 //3 Ordinamento in ordine alfabetico (bubbleSort)
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 //7 Visualizzazione tutti gli animali
 //8 Ricerca nomi più lunghi e più corti + visualizzazione
 //9 Cancellazione di tutti i nomi ripetuti
+
 
 namespace Gestione_funzione
 {
@@ -24,37 +26,65 @@ namespace Gestione_funzione
             lenght++;
         }
 
+
+        static void Visualizza(string[] nomi, ref int lenght)
+        {
+            for (int i = 0; i < lenght; i++)
+            {
+                Console.WriteLine(nomi[i]);
+            }
+        }
+
         static void Main(string[] args)
         {
             string[] nomi = new string[100];
             int scelta, lenght=0;
-            scelta=int.Parse(Console.ReadLine());
+            bool continua=true;
+            
 
-            switch (scelta)
+            while (continua)
             {
-                case 1:
-                    Aggiunta(nomi, ref lenght);
-                    break;
+                scelta = int.Parse(Console.ReadLine());
 
-                case 2:
-                    break;
+                switch (scelta)
+                {
+                    case 0:
+                        continua=false;
+                        break;
 
-                case 3:
-                    break;
+                    case 1:
+                        Console.WriteLine("Inserisci il nome dell'animale");
+                        Aggiunta(nomi, ref lenght);
+                        break;
 
-                case 4:
-                    break;
+                    case 2:
+                        break;
 
-                case 5:
-                    break;
+                    case 3:
+                        break;
 
-                case 6:
-                    break;
+                    case 4:
+                        break;
 
-                case 7:
-                    break;
+                    case 5:
+                        break;
 
+                    case 6:
+                        break;
+
+                    case 7:
+                        Visualizza(nomi, ref lenght);
+                        break;
+
+                    case 8:
+                        break;
+
+                    case 9:
+                        break;
+
+                }
             }
+            
         }
     }
 }
