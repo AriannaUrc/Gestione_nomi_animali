@@ -26,6 +26,35 @@ namespace Gestione_funzione
 
         static void Main(string[] args)
         {
+            string[] nomi = new string[100];
+            int scelta, lenght=0;
+            scelta=int.Parse(Console.ReadLine());
+
+            switch (scelta)
+            {
+                case 1:
+                    Aggiunta(nomi, ref lenght);
+                    break;
+
+                case 2:
+                    break;
+
+                case 3:
+                    break;
+
+                case 4:
+                    break;
+
+                case 5:
+                    break;
+
+                case 6:
+                    break;
+
+                case 7:
+                    break;
+
+            }
         }
     }
 }
