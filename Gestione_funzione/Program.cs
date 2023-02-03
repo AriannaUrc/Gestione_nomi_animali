@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 //0 uscita dal menu ok.
 //1 Aggiunta nome animale ok.
 //2 Cancella primo nome trovato animale ok.
-//3 Ordinamento in ordine alfabetico (bubbleSort)
+//3 Ordinamento in ordine alfabetico (bubbleSort) ok.
 //4 Ricerca sequenziale animali ok.
 //5 Visualizza animali ripetuti (anche quante volte sono ripetuti)
 //6 Modifica nome
@@ -24,6 +24,11 @@ namespace Gestione_funzione
         {
             nomi[lenght]=Console.ReadLine();
             lenght++;
+        }
+
+        static void Modifica(string[] nomi, int lenght, int pos, string nuovoNome)
+        {
+            nomi[pos]=nuovoNome;
         }
 
 
@@ -117,7 +122,7 @@ namespace Gestione_funzione
         static void Main(string[] args)
         {
             string[] nomi = new string[100];
-            string ricerca;
+            string ricerca, nuovoNome;
             int scelta, lenght=0, pos;
             bool continua=true;
             
@@ -172,6 +177,11 @@ namespace Gestione_funzione
                         break;
 
                     case 6:
+                        Console.WriteLine("Inserire indice dell'elemento da modificare: ");
+                        pos =int.Parse(Console.ReadLine());
+                        Console.WriteLine("Inserire il nuovo elemento: ");
+                        nuovoNome = Console.ReadLine();
+                        Modifica(nomi, lenght, pos, nuovoNome);
                         break;
 
                     case 7:
