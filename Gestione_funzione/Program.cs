@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 //3 Ordinamento in ordine alfabetico (bubbleSort) ok.
 //4 Ricerca sequenziale animali ok.
 //5 Visualizza animali ripetuti (anche quante volte sono ripetuti)
-//6 Modifica nome
+//6 Modifica nome ok.
 //7 Visualizzazione tutti gli animali ok.
 //8 Ricerca nomi più lunghi e più corti + visualizzazione
 //9 Cancellazione di tutti i nomi ripetuti ok.
@@ -38,6 +38,32 @@ namespace Gestione_funzione
             {
                 Console.WriteLine(nomi[i]);
             }
+        }
+
+        static void VisualizzaRip(string[] nomi, int lenght)
+        {
+            int lenght2 = lenght, templenght2, rip;
+            string[] nomi2 = new string[lenght2];
+            for (int j = 0; j < lenght; j++)
+            {
+                nomi2[j] = nomi[j];
+            }
+
+            for (int i = 0; i < lenght; i++)
+            {
+                templenght2=lenght2;
+                CancellaAll(ref nomi2, ref lenght2, nomi[i]);
+                for (int j = 0; j < lenght2; j++)
+                {
+                    Console.WriteLine(nomi2[j]);
+                }
+                rip = templenght2 - lenght2;
+                if (rip > 1)
+                {
+                    Console.WriteLine("la parola " + nomi[i] + " è stata ripetuta " + rip + " volte");
+                }
+            }
+
         }
 
         static void BubbleSort(string[] nomi, ref int lenght)
@@ -88,10 +114,10 @@ namespace Gestione_funzione
             }
         }
 
-        static bool CancellaAll(string[] nomi, ref int lenght, string ricerca)
+        static bool CancellaAll(ref string[] animali, ref int lenght, string ricerca)
         {
             int pos=0;
-            pos = Ricerca(nomi, ref lenght, ricerca);
+            pos = Ricerca(animali, ref lenght, ricerca);
             if (pos == -1)
             {
                 return false;
@@ -100,16 +126,16 @@ namespace Gestione_funzione
             {
                 while (pos != -1)
                 {
-                    pos = Ricerca(nomi, ref lenght, ricerca);
+                    pos = Ricerca(animali, ref lenght, ricerca);
                     if (pos == -1)
                     {
                         return true;
                     }
                     else
                     {
-                        for (int i = pos; i < lenght; i++)
+                        for (int i = pos; i < lenght-1; i++)
                         {
-                            nomi[i] = nomi[i + 1];
+                            animali[i] = animali[i + 1];
                         }
                         lenght--;
                     }
@@ -174,6 +200,7 @@ namespace Gestione_funzione
                         break;
 
                     case 5:
+                        VisualizzaRip(nomi, lenght);
                         break;
 
                     case 6:
@@ -194,7 +221,7 @@ namespace Gestione_funzione
                     case 9:
                         Console.WriteLine("Inserire elemento da cancellare");
                         ricerca = Console.ReadLine();
-                        if (CancellaAll(nomi, ref lenght, ricerca))
+                        if (CancellaAll(ref nomi, ref lenght, ricerca))
                         {
                             Console.WriteLine("Tutti gli elementi sono stati cancellati");
                         }
