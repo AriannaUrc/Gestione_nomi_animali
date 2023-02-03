@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 //5 Visualizza animali ripetuti (anche quante volte sono ripetuti) ok.
 //6 Modifica nome ok.
 //7 Visualizzazione tutti gli animali ok.
-//8 Ricerca nomi più lunghi e più corti + visualizzazione
+//8 Ricerca nomi più lunghi e più corti + visualizzazione ok.
 //9 Cancellazione di tutti i nomi ripetuti ok.
 
 
@@ -178,6 +178,7 @@ namespace Gestione_funzione
 
             while (continua)
             {
+                Console.WriteLine("\n0 uscita dal menu\n1 Aggiunta nome animale\n2 Cancella primo nome trovato animale\n3 Ordinamento in ordine alfabetico (bubbleSort)\n4 Ricerca sequenziale animali\n5 Visualizza animali ripetuti (anche quante volte sono ripetuti)\n6 Modifica nome\n7 Visualizzazione tutti gli animali\n8 Ricerca nomi più lunghi e più corti + visualizzazione\n9 Cancellazione di tutti i nomi ripetuti\n");
                 scelta = int.Parse(Console.ReadLine());
 
                 switch (scelta)
