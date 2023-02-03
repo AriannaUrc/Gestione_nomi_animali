@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 //2 Cancella primo nome trovato animale ok.
 //3 Ordinamento in ordine alfabetico (bubbleSort) ok.
 //4 Ricerca sequenziale animali ok.
-//5 Visualizza animali ripetuti (anche quante volte sono ripetuti)
+//5 Visualizza animali ripetuti (anche quante volte sono ripetuti) ok.
 //6 Modifica nome ok.
 //7 Visualizzazione tutti gli animali ok.
 //8 Ricerca nomi più lunghi e più corti + visualizzazione
@@ -65,6 +65,29 @@ namespace Gestione_funzione
             }
 
         }
+
+        static void MaxMin(string[] nomi, int lenght)
+        {
+            int max=0, min=0, indexMax=0, indexMin=0;
+            for (int i = 0; i < lenght; i++)
+            {
+                if (max < nomi[i].Length)
+                {
+                    max= nomi[i].Length;
+                    indexMax= i;
+                }
+
+                if (min > nomi[i].Length)
+                {
+                    min = nomi[i].Length;
+                    indexMin= i;
+                }
+
+            }
+            Console.WriteLine("la parola più lunga è: " + nomi[indexMax]);
+            Console.WriteLine("la parola più corta è: " + nomi[indexMin]);
+        }
+
 
         static void BubbleSort(string[] nomi, ref int lenght)
         {
@@ -216,6 +239,7 @@ namespace Gestione_funzione
                         break;
 
                     case 8:
+                        MaxMin(nomi, lenght);
                         break;
 
                     case 9:
