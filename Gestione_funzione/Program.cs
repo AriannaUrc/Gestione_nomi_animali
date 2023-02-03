@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 //6 Modifica nome
 //7 Visualizzazione tutti gli animali ok.
 //8 Ricerca nomi più lunghi e più corti + visualizzazione
-//9 Cancellazione di tutti i nomi ripetuti
+//9 Cancellazione di tutti i nomi ripetuti ok.
 
 
 namespace Gestione_funzione
@@ -32,6 +32,20 @@ namespace Gestione_funzione
             for (int i = 0; i < lenght; i++)
             {
                 Console.WriteLine(nomi[i]);
+            }
+        }
+
+        static void BubbleSort(string[] nomi, ref int lenght)
+        {
+            for (int i = 0; i < lenght; i++)
+            {
+                for (int j = 0; j < lenght-i-1; j++)
+                {
+                    if (nomi[j][0] > nomi[j+1][0])
+                    {
+                        (nomi[j], nomi[j+1]) = (nomi[j+1], nomi[j]);
+                    }
+                }
             }
         }
 
@@ -72,24 +86,32 @@ namespace Gestione_funzione
         static bool CancellaAll(string[] nomi, ref int lenght, string ricerca)
         {
             int pos=0;
-            while (pos != -1)
+            pos = Ricerca(nomi, ref lenght, ricerca);
+            if (pos == -1)
             {
-                pos = Ricerca(nomi, ref lenght, ricerca);
-                if (pos == -1)
+                return false;
+            }
+            else
+            {
+                while (pos != -1)
                 {
-                    return false;
-                }
-                else
-                {
-                    for (int i = pos; i < lenght; i++)
+                    pos = Ricerca(nomi, ref lenght, ricerca);
+                    if (pos == -1)
                     {
-                        nomi[i] = nomi[i + 1];
+                        return true;
                     }
-                    lenght--;
-                    return true;
+                    else
+                    {
+                        for (int i = pos; i < lenght; i++)
+                        {
+                            nomi[i] = nomi[i + 1];
+                        }
+                        lenght--;
+                    }
                 }
             }
-            
+            return true;
+
         }
 
         static void Main(string[] args)
@@ -129,6 +151,7 @@ namespace Gestione_funzione
                         break;
 
                     case 3:
+                        BubbleSort(nomi, ref lenght);
                         break;
 
                     case 4:
@@ -159,6 +182,16 @@ namespace Gestione_funzione
                         break;
 
                     case 9:
+                        Console.WriteLine("Inserire elemento da cancellare");
+                        ricerca = Console.ReadLine();
+                        if (CancellaAll(nomi, ref lenght, ricerca))
+                        {
+                            Console.WriteLine("Tutti gli elementi sono stati cancellati");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Non è stato trovato un elemento con tale nome");
+                        }
                         break;
 
                     default:
