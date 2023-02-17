@@ -68,7 +68,7 @@ namespace Gestione_funzione
 
         static void MaxMin(string[] nomi, int lenght)
         {
-            int max=0, min=0, indexMax=0, indexMin=0;
+            int max=0, min= min = nomi[0].Length, indexMax=0, indexMin=0;
             for (int i = 0; i < lenght; i++)
             {
                 if (max < nomi[i].Length)
